@@ -43,7 +43,7 @@
 | Rating                  | 9.1               | Rating on shopping experience                        | decimal   |
 
 
-## 2. Schema Design / 
+## 2. Schema Design
 ### Dimension Tables
 - 'customer' table
 
@@ -83,23 +83,16 @@
 
 ## 3. Transform and Load Data
 
-
-mermaid
-
-graph TD
-    A[Kaggle Dataset] --> |kagglehub| B(Python Loader)
-
-    subgraph Transformation
-    B --> C{Pandas Split}
-    C --> D[dim_customer]
-    C --> E[dim_product_location]
-    C --> F[fact_sales]
-    end
-
-    D & E & F -->|to_sql| G[(SQLite DB)]
-    
-    G --> H[Analytical Reports]
-    H --> I[Window Functions/Margins]
+```mermaid
+flowchart TD
+    A[Start] --> B[Input Data]
+    B --> C{Is Data Valid?}
+    C -- Yes --> D[Process Data]
+    C -- No --> E[Show Error]
+    E --> B
+    D --> F[Generate Output]
+    F --> G[End]
+```
 
 
 ```
