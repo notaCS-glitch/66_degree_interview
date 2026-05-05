@@ -82,65 +82,24 @@
 
 
 ## 3. Transform and Load Data
-
-```mermaid
-flowchart TD
-    A[Start] --> B[Input Data]
-    B --> C{Is Data Valid?}
-    C -- Yes --> D[Process Data]
-    C -- No --> E[Show Error]
-    E --> B
-    D --> F[Generate Output]
-    F --> G[End]
-```
-
-
-```
-
 ### Data processing
 - I will use a dataframe framework to process the data. 
 I decided to use the pandas package over pyspark, mainly because the integration between pandas and sqlite seems to be stronger.
-- Using pandas
+- Using pandas, I read the supermarket.csv into a dataframe. 
+- I then use this dataframe as the base dataframe to create my two dimension dataframes (customer and product_location) 
+and the fact dataframe (sales)
+- I manually have the contract_id and product_location_id created before loading. I am doing this because it is the 
+initialization of creating these new entities. Afterward, updates will be handled by SQL and the 
+auto incrementing feature
 
-# r"""
-#
-# gross margin percentage | 4.761904762 | ( total - cogs ) / total --> this computed and not stored in fact table because it will break aggregation, also is technically duplicated data
-# cogs                    | 164.52      | quanity * unit_price
-# gross_income            | 8.226       | this is just the same as tax rate (now markup because we don't seem to know the tax rate), eiter way it is duplicate data
-#
-#
-# dim_customer
-# --------------------------
-# customer_id
-# customer_type           | Member
-# gender                  | Female
-#
-#
-# dim_product_location
-# --------------------------
-# product_location_id
-# product_line            | Food and beverages
-# branch                  | B
-# city                    | Mandalay
-# markup_rate             | 0.05
-#
-#
-# fact_sales
-# --------------------------
-# invoice_id              | 692-92-5582
-# customer_id
-# product_location_id
-# quantity                | 3
-# unit_price              | 54.84
-# markup_amount           | 8.226
-# total                   | 172.746
-# date                    | 2/20/2019
-# time                    | 13:27
-# payment                 | Credit card
-# rating                  | 5.9
-# """
-#
+### Loading data
+- Before loading the data, I create the two dim tables and a fact table in sqlite.
+- These create statements can be viewed in the sql/
+- I use the sqlite python package to load the data into the sqlite tables.
 
 
+## 4. Reporting
 
-```
+
+## 5. Draft a Solution for Cloud Deployment
+https://docs.google.com/presentation/d/1-R_hKTMw7z7nDAyw0BXy0kruQqntFjEJ_C6JqzkGqRc/edit?slide=id.p#slide=id.p
