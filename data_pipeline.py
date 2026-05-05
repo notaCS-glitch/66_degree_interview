@@ -168,11 +168,5 @@ print(out)
 out = run_report_queries(database=db, sql_file='sql/reports/top_product_lines_by_city.sql')
 print(out)
 
-out = run_report_queries(database=db, sql_file='sql/reports/top_product_lines.sql')
-print(out)
-
 out = run_report_queries(database=db, sql_file='sql/reports/customer_demo.sql')
-print(out)
-
-out = run_report_queries(database=db, sql_file='sql/reports/markup_report.sql')
 print(out)

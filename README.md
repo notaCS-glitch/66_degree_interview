@@ -1,9 +1,9 @@
 ## 1. Data Extraction
 
 ### Download from kaggle
-- For data extraction Kaggle recommended using their newer framework of 'kagglehub' to handle downloading data sets. 
-- The data is being downloaded into a local to the project folder called 'data'. 
-- The data is coming as a CSV. 
+- For data extraction, Kaggle recommended using their newer framework of 'kagglehub' to handle downloading data sets. 
+- The data is being downloaded into a local folder called 'data'. 
+- The data is coming as a CSV.
 
 ### Data profiling
 - After downloading the data set, I did take a quick look it in Google Sheets.
@@ -20,7 +20,7 @@
   - gross_margin_percentage
     - Like I mention before, this dataset is odd, this is just the gross income or the Tax at 5% on COGS divided by the 
     total cost of the purchase. Because the markup is all the same, this is just a repetitive number that can be 
-    calculated at any time. I will leave out of the base tables.
+    calculated at any time. I will leave it out of the fact table.
 
 | Column                  | Example           | Description                                          | Data Type |
 |-------------------------|-------------------|------------------------------------------------------|-----------|
