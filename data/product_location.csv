@@ -1,0 +1,19 @@
+product_location_id,branch,city,product_line,markup_rate
+1,A,Yangon,Health and beauty,0.05
+2,C,Naypyitaw,Electronic accessories,0.05
+3,A,Yangon,Home and lifestyle,0.05
+4,A,Yangon,Sports and travel,0.05
+5,A,Yangon,Electronic accessories,0.05
+6,C,Naypyitaw,Home and lifestyle,0.05
+7,B,Mandalay,Food and beverages,0.05
+8,B,Mandalay,Fashion accessories,0.05
+9,B,Mandalay,Electronic accessories,0.05
+10,A,Yangon,Food and beverages,0.05
+11,B,Mandalay,Sports and travel,0.05
+12,B,Mandalay,Home and lifestyle,0.05
+13,B,Mandalay,Health and beauty,0.05
+14,A,Yangon,Fashion accessories,0.05
+15,C,Naypyitaw,Food and beverages,0.05
+16,C,Naypyitaw,Sports and travel,0.05
+17,C,Naypyitaw,Health and beauty,0.05
+18,C,Naypyitaw,Fashion accessories,0.05
