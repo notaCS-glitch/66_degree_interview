@@ -40,6 +40,16 @@ def rename_df_columns(dataframe, column_name_mapping):
         raise
 
 
+def reformat_df_date_col(dataframe, col_name):
+    try:
+        dataframe[col_name] = pd.to_datetime(dataframe[col_name])
+        dataframe[col_name] = dataframe[col_name].dt.strftime('%Y-%m-%d')
+        return dataframe
+    except Exception as e:
+        logger.error(f'{type(e).__name__}: An error occurred when converting date column of dataframe --> {e}')
+        raise
+
+
 def split_df_to_new_df(base_df, new_df_columns: List[str], unique=False):
     try:
         if unique:

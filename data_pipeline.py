@@ -1,7 +1,7 @@
 import os
 from decimal import Decimal
 from kaggle_process import get_kaggle_data
-from pandas_process import create_df_from_csv, split_df_to_new_df, rename_df_columns, write_df_to_csv
+from pandas_process import create_df_from_csv, split_df_to_new_df, rename_df_columns, write_df_to_csv, reformat_df_date_col
 from sqlite_process import create_tables, upsert_data, run_report_queries
 
 ########################################################################################################################
@@ -66,6 +66,8 @@ col_name_mapping = {
 }
 df_supermarket = rename_df_columns(dataframe=df_supermarket, column_name_mapping=col_name_mapping)
 df_supermarket['markup_rate'] = df_supermarket['markup_amount'] / df_supermarket['cogs']
+df_supermarket = reformat_df_date_col(dataframe=df_supermarket, col_name='date')
+
 # """
 
 ########################################################################################################################
@@ -133,13 +135,13 @@ This will create the tables in sqlite and upsert the data to their respective ta
 
 # r"""
 db = "supermarket.db"
-table_name = create_tables(database=db, table_sql="sql/customer.sql")
+table_name = create_tables(database=db, table_sql="sql/create_tables/customer.sql")
 upsert_data(database=db, dataframe=df_customer, table_name=table_name)
 
-table_name = create_tables(database=db, table_sql="sql/product_location.sql")
+table_name = create_tables(database=db, table_sql="sql/create_tables/product_location.sql")
 upsert_data(database=db, dataframe=df_product_location, table_name=table_name)
 
-table_name = create_tables(database=db, table_sql="sql/sales.sql")
+table_name = create_tables(database=db, table_sql="sql/create_tables/sales.sql")
 upsert_data(database=db, dataframe=df_sales, table_name=table_name)
 # """
 
@@ -149,16 +151,28 @@ This is where we will build our reports
 '''
 
 db = "supermarket.db"
-# out = run_report_queries(database=db, sql_file='sql/joined_view.sql')
 
-out = run_report_queries(database=db, sql_file='sql/top_product_lines_by_city.sql')
+
+out = run_report_queries(database=db, sql_file='sql/reports/top_porduct_by_female.sql')
 print(out)
 
-out = run_report_queries(database=db, sql_file='sql/top_product_lines.sql')
+out = run_report_queries(database=db, sql_file='sql/reports/top_porduct_by_male.sql')
 print(out)
 
-out = run_report_queries(database=db, sql_file='sql/customer_demo.sql')
+out = run_report_queries(database=db, sql_file='sql/reports/top_product_rank.sql')
 print(out)
 
-out = run_report_queries(database=db, sql_file='sql/markup_report.sql')
+out = run_report_queries(database=db, sql_file='sql/reports/revenue_by_month.sql')
+print(out)
+
+out = run_report_queries(database=db, sql_file='sql/reports/top_product_lines_by_city.sql')
+print(out)
+
+out = run_report_queries(database=db, sql_file='sql/reports/top_product_lines.sql')
+print(out)
+
+out = run_report_queries(database=db, sql_file='sql/reports/customer_demo.sql')
+print(out)
+
+out = run_report_queries(database=db, sql_file='sql/reports/markup_report.sql')
 print(out)
