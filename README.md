@@ -102,4 +102,4 @@ auto incrementing feature
 
 
 ## 5. Draft a Solution for Cloud Deployment
-https://docs.google.com/presentation/d/1-R_hKTMw7z7nDAyw0BXy0kruQqntFjEJ_C6JqzkGqRc/edit?slide=id.p#slide=id.p
+- https://docs.google.com/presentation/d/1-R_hKTMw7z7nDAyw0BXy0kruQqntFjEJ_C6JqzkGqRc/edit?slide=id.p#slide=id.p
